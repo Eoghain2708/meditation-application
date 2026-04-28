@@ -26,6 +26,7 @@ export default function CategoryDropDown() {
         <select 
         value={searchParams.get("category") || ""} onChange={handleChange}
         className="text-blue-400">
+            <option key="all" value="">all</option>
             {categories.map((category) => (
                 <option key={category} value={category}>{category}</option>
             ))}

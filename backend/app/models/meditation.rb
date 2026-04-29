@@ -21,4 +21,6 @@ class Meditation < ApplicationRecord
 
   scope :search_title, ->(title) { where("title LIKE ?", "%#{title.downcase}%") if title.present? }
   scope :filter_by_category, ->(category) { where(category: category.downcase) if category.present? }
+
+  has_many :meditation_sessions, dependent: :destroy
 end

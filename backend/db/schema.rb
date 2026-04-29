@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_27_135413) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_29_213427) do
+  create_table "meditation_sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "duration"
+    t.integer "meditation_id", null: false
+    t.text "notes"
+    t.boolean "public", default: false, null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["meditation_id"], name: "index_meditation_sessions_on_meditation_id"
+    t.index ["user_id"], name: "index_meditation_sessions_on_user_id"
+  end
+
   create_table "meditations", force: :cascade do |t|
     t.text "benefits"
     t.string "category"
@@ -29,4 +41,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_27_135413) do
     t.datetime "updated_at", null: false
     t.string "username"
   end
+
+  add_foreign_key "meditation_sessions", "meditations"
+  add_foreign_key "meditation_sessions", "users"
 end

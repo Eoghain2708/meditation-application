@@ -4,6 +4,8 @@ class User < ApplicationRecord
   normalizes :email, with: ->(email) { email.strip.downcase }
   before_save :set_username
 
+  has_many :meditation_sessions, dependent: :destroy
+
   def set_username
     self.username = self.email.split("@").first
   end

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import sadBear from "../assets/images-Photoroom.png"
+import sadBear from "../../assets/images-Photoroom.png"
 
 export default function MeditationNotFoundPage() {
     return (

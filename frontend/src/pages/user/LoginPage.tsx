@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { login } from "../api/auth/auth";
+import { login } from "../../api/auth/auth";
 
 import { useNavigate } from "react-router-dom";
-import { saveToken } from "../api/auth/token";
+import { saveToken } from "../../api/auth/token";
 
-import "./styles/authPages.css"
+import "../styles/authPages.css"
 
 export default function LoginPage() {
     const [email, setEmail] = useState("")
@@ -27,7 +27,7 @@ export default function LoginPage() {
     return (
         <div className="auth-page">
       <div className="auth-card">
-        <h1>Login</h1>
+        <h1 className="pb-3">Login</h1>
 
         <form className="auth-form" onSubmit={handleSubmit}>
           <input

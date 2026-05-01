@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
-import MeditationsPage from "./pages/MeditationsPage";
-import MeditationByIdPage from "./pages/MeditationByIdPage";
-import SignUpPage from "./pages/SignUpPage";
-import LoginPage from "./pages/LoginPage";
+import MeditationsPage from "./pages/meditation/MeditationsPage";
+import MeditationByIdPage from "./pages/meditation/MeditationByIdPage";
+import SignUpPage from "./pages/user/SignUpPage";
+import LoginPage from "./pages/user/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CreateMeditationSessionPage from "./pages/CreateMeditationSessionPage";
 import MyMeditationSessionsPage from "./pages/MyMeditationSessionsPage";

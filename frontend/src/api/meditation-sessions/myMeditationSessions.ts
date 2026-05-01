@@ -6,7 +6,8 @@ export async function getMyMeditationSessions(): Promise<MeditationSession[]> {
     const token = localStorage.getItem("token")
     const response = await fetch(BASE_URL, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
         }
     });
 
@@ -21,7 +22,8 @@ export async function getMyMeditationSessionById(id: number): Promise<Meditation
     const token = localStorage.getItem("token");
     const response = await fetch(`${BASE_URL}/${id}`, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
         }
     })
 
@@ -37,7 +39,8 @@ export async function createMeditationSession(data: MeditationSessionData): Prom
     const response = await fetch(BASE_URL, {
         method: "POST", 
         headers: {
-            Authorizatin: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
             meditation_session: data
@@ -52,7 +55,8 @@ export async function deleteMeditationSession(id: number): Promise<MeditationSes
     const response = await fetch(`${BASE_URL}/${id}`, {
         method: "DELETE",
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
         }
     })
     return response.json();

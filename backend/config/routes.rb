@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # Meditation Sessions
   get "/meditation-sessions",       to: "meditation_sessions#index"
   get "/meditation-sessions/:id",   to: "meditation_sessions#show"
-  post "/meditation-sessions",      to: "medtiation_sessions#create"
+  post "/meditation-sessions",      to: "meditation_sessions#create"
   delete "/meditation-sessions/:id",  to: "meditation_sessions#destroy"
 
   # Other User Meditation Sessions

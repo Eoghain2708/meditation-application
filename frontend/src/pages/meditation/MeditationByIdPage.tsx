@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import type { Meditation } from "../types/Meditation";
-import { getMeditationById } from "../api/meditations";
+import type { Meditation } from "../../types/Meditation";
+import { getMeditationById } from "../../api/meditations"; 
 import { useEffect, useState } from "react";
 import MeditationNotFoundPage from "./MeditationNotFoundPage";
-import LoadingPage from "./LoadingPage";
+import LoadingPage from "../LoadingPage";
 import { Link } from "react-router-dom";
 
 export default function MeditationByIdPage() {

@@ -6,7 +6,8 @@ export async function getSessionsByMeditation(meditation_id: number): Promise<Me
     const token = localStorage.getItem("token")
     const response = await fetch(`${BASE_URL}/${meditation_id}/meditation-sessions`, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
         }
     });
 

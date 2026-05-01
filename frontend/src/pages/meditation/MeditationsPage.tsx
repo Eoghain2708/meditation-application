@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import type { Meditation } from "../types/Meditation";
-import { getMeditations } from "../api/meditations";
-import MeditationCard from "../components/MeditationCard";
+import type { Meditation } from "../../types/Meditation";
+import { getMeditations } from "../../api/meditations";
+import MeditationCard from "../../components/MeditationCard";
 import { useSearchParams } from "react-router-dom";
-import SearchBar from "../components/SearchBar";
-import CategoryDropDown from "../components/CategoryDropDown";
-import MeditationNotFoundComponent from "../components/MeditationNotFoundComponent";
+import SearchBar from "../../components/SearchBar";
+import CategoryDropDown from "../../components/CategoryDropDown";
+import MeditationNotFoundComponent from "../../components/MeditationNotFoundComponent";
 
 export default function MeditationsPage() {
   const [meditations, setMeditations] = useState<Meditation[]>([]);

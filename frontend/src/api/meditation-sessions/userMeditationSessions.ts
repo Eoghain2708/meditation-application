@@ -6,7 +6,8 @@ export async function getUserMeditationSessions(user_id: number): Promise<Medita
     const token = localStorage.getItem("token")
     const response = await fetch(`${BASE_URL}/${user_id}/meditation-sessions`, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
         }
     });
 
@@ -21,7 +22,8 @@ export async function getUserMeditationSessionById(user_id: number, meditation_i
     const token = localStorage.getItem("token");
     const response = await fetch(`${BASE_URL}/${user_id}/meditation-sessions/${meditation_id}`, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
         }
     })
 

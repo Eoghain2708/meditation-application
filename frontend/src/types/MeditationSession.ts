@@ -1,4 +1,5 @@
 export interface MeditationSession {
+    id: number
     duration: number;
     notes: string | null;
 
@@ -10,6 +11,7 @@ export interface MeditationSession {
     meditation: {
         id: number,
         title: string
+        category: string
     };
 
     public: boolean;

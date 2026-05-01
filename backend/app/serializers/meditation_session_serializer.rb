@@ -13,7 +13,8 @@ class MeditationSessionSerializer < ActiveModel::Serializer
   def meditation
     {
       id: object.meditation_id,
-      title: object.meditation.title
+      title: object.meditation.title,
+      category: object.meditation.category
     }
   end
 end

@@ -22,7 +22,7 @@ export default function MeditationsPage() {
     return (
       <>
       <div className="max-w-7xl mx-auto px-6 py-10">
-        <h1 className="text-4xl font-semibold text-gray-800">Meditations</h1>
+        <h1 className="text-4xl font-semibold text-purple-200">Meditations</h1>
         <div className="pb-15 pt-5">
           <SearchBar />
           <div className="flex justify-center mt-10 gap-10">

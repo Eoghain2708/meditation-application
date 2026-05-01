@@ -43,19 +43,21 @@ export default function CreateMeditationSessionPage() {
      <div className="flex flex-col items-center justify-center mx-auto">
         
         <h1 className="pt-5">Creating a session</h1>
-        <p className="py-5">With meditation: 
+        <p className="pt-3 pb-2">With meditation: 
             <Link to={`/meditations/${id}`}>
             <span className="text-purple-400"> {meditation?.title}</span>
             </Link> 
         </p>
-        <p className="text-sm py-5">Not the right meditation? 
+        <p className="text-sm pt-3 pb-2">Not the right meditation? 
         <Link to="/meditations">
             <span className="text-purple-500"> Go back</span>
         </Link>
         </p>
       <div className="p-10 rounded-xl shadow-lg min-w-full">
         <form className="auth-form" onSubmit={handleSubmit}>
+          <label htmlFor="duration" className="text-sm">Duration (minutes) - between 1 and 240</label>
           <input
+            name="duration"
             type="number"
             min={1}
             max={240}
@@ -66,8 +68,10 @@ export default function CreateMeditationSessionPage() {
                 duration: Number(e.target.value),
             })}
           />
-
+          
+          <label htmlFor="notes" className="text-sm">Session notes</label>
           <textarea
+            name="notes"
             rows={5}
             className="auth-input text-sm"
             placeholder="add any notes about your session here..."
@@ -78,7 +82,9 @@ export default function CreateMeditationSessionPage() {
             })}
           />
 
+          <label htmlFor="notes" className="text-sm">Public</label>
           <select
+            name="public"
             value={String(formData.public)}
             className="auth-input"
             onChange={(e) => setFormData({

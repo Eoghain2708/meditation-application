@@ -1,10 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
-import MeditationsPage from "./pages/MeditationsPage";
-import MeditationByIdPage from "./pages/MeditationByIdPage";
-import SignUpPage from "./pages/SignUpPage";
-import LoginPage from "./pages/LoginPage";
+import MeditationsPage from "./pages/meditation/MeditationsPage";
+import MeditationByIdPage from "./pages/meditation/MeditationByIdPage";
+import SignUpPage from "./pages/user/SignUpPage";
+import LoginPage from "./pages/user/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CreateMeditationSessionPage from "./pages/meditation-sessions/CreateMeditationSessionPage";
+import MyMeditationSessionsPage from "./pages/meditation-sessions/MyMeditationSessionsPage";
+import DashboardPage from "./pages/user/DashboardPage";
+import MeditationSessionByIdPage from "./pages/meditation-sessions/MeditationSessionByIdPage";
 
 function App() {
   
@@ -12,18 +16,48 @@ function App() {
   return (
       <BrowserRouter>
       <Routes>
+
         <Route path="/" element={<SignUpPage />} />
+
         <Route path="/login" element={<LoginPage /> }/>
+
         <Route path="/meditations" element={
           <ProtectedRoute>
           <MeditationsPage/>
           </ProtectedRoute>
         } />
+
         <Route path="/meditations/:id" element={
           <ProtectedRoute>
           <MeditationByIdPage />
           </ProtectedRoute>
         } />
+
+        <Route path="/meditations/:id/sessions/new" element={
+          <ProtectedRoute>
+            <CreateMeditationSessionPage />
+          </ProtectedRoute>
+        }></Route>
+
+        <Route path="/meditation-sessions" element={
+          <ProtectedRoute>
+            <MyMeditationSessionsPage />
+          </ProtectedRoute>
+        }></Route>
+
+        <Route path="/meditation-sessions/:id" element={
+          <ProtectedRoute>
+            <MeditationSessionByIdPage />
+          </ProtectedRoute>
+        }></Route>
+
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        }>
+        </Route>
+
       </Routes>
       </BrowserRouter>
   )

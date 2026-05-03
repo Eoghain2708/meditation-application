@@ -2,5 +2,5 @@ class MeditationSession < ApplicationRecord
   belongs_to :user
   belongs_to :meditation
 
-  scope :public, ->(session) { where(public: true) }
+  scope :that_are_public, -> { where(public: true) }
 end

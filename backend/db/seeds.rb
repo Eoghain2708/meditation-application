@@ -25,7 +25,7 @@ Meditation.destroy_all
   rand(2..5).times do
     Meditation.create!(
       title: Faker::Lorem.words(number: 3).join(' ').titleize, # Random meditation title
-      category: "vipassana", # Random category
+      category: [ "vipassana", "metta", "samatha", "inquiry", "combo" ].sample, # Random category
       description: Faker::Lorem.paragraph(sentence_count: 5), # Random description
       technique: Faker::Lorem.words(number: 100).join(' ').titleize, # Random technique
       benefits: Faker::Lorem.paragraph(sentence_count: 3), # Random benefits (optional)
@@ -34,4 +34,4 @@ Meditation.destroy_all
 end
 
 puts "Created #{User.count} users."
-puts "Created #{Meditation.count} meditation sessions."
+puts "Created #{Meditation.count} meditations."

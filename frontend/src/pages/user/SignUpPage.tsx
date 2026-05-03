@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { signup } from "../api/auth/auth"
+import { signup } from "../../api/auth/auth"
+import "../styles/authPages.css"
 
 
 import { useNavigate } from "react-router-dom"
@@ -25,7 +26,7 @@ export default function SignUpPage() {
     return (
      <div className="auth-page">
       <div className="auth-card">
-        <h1>Sign Up</h1>
+        <h1 className="pb-3">Sign Up</h1>
 
         <form className="auth-form" onSubmit={handleSubmit}>
           <input

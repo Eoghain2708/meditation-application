@@ -8,7 +8,7 @@ export async function getMeditations(query = ""): Promise<Meditation[]> {
     const token = localStorage.getItem("token");
     const response = await fetch(url, {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
         }
     });
 

@@ -19,8 +19,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_29_213427) do
     t.boolean "public", default: false, null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.index ["meditation_id"], name: "index_meditation_sessions_on_meditation_id"
-    t.index ["user_id"], name: "index_meditation_sessions_on_user_id"
+    t.index [ "meditation_id" ], name: "index_meditation_sessions_on_meditation_id"
+    t.index [ "user_id" ], name: "index_meditation_sessions_on_user_id"
   end
 
   create_table "meditations", force: :cascade do |t|

@@ -1,6 +1,5 @@
 class MeditationSessionsController < ApplicationController
   before_action :set_meditation_session, only: %i[ show destroy ]
-  before_action :set_current_user
 
   # GET /meditation_sessions (for current user)
   def index
@@ -33,10 +32,6 @@ class MeditationSessionsController < ApplicationController
   end
 
   private
-
-    def set_current_user
-      @current_user = Current.user
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_meditation_session

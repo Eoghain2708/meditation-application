@@ -14,7 +14,27 @@ class UsersController < ApplicationController
   end
 
   def me
-    render json: @current_user, serializer: UserSerializer
+    user = @current_user
+    sessions = user.meditation_sessions
+    total_sessions = sessions.count
+    total_minutes = sessions.sum(:duration)
+    recent_session = sessions.includes(:meditation).order(created_at: :desc).first
+
+    render json: {
+      username: user.username,
+      total_sessions: total_sessions,
+      minutes_meditated: total_minutes,
+      recent_session: recent_session && {
+        id: recent_session.id,
+        duration: recent_session.duration,
+        created_at: recent_session.created_at,
+        meditation: {
+          title: recent_session.meditation.title,
+          category: recent_session.meditation.category
+        }
+      }
+    }
+
   end
 
   private

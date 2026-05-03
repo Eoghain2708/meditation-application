@@ -1,4 +1,5 @@
 import type { MeditationSession, MeditationSessionData } from "../../types/MeditationSession";
+import { redirect } from "react-router-dom";
 
 const BASE_URL = "http://localhost:3000/meditation-sessions";
 
@@ -12,6 +13,7 @@ export async function getMyMeditationSessions(): Promise<MeditationSession[]> {
     });
 
     if (!response.ok) {
+        redirect("/");
         throw new Error("Unauthorised")
     }
 
@@ -28,6 +30,7 @@ export async function getMyMeditationSessionById(id: number): Promise<Meditation
     })
 
     if (!response.ok) {
+        redirect("/");
         throw new Error("Unauthorised");
     }
 

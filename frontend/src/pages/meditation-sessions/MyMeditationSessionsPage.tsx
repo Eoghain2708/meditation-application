@@ -1,8 +1,8 @@
-import type { MeditationSession } from "../types/MeditationSession"
-import { getMyMeditationSessions } from "../api/meditation-sessions/myMeditationSessions"
+import type { MeditationSession } from "../../types/MeditationSession";
+import { getMyMeditationSessions } from "../../api/meditation-sessions/myMeditationSessions";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import MeditationSessionCard from "../components/MeditationSessionCard";
+import MeditationSessionCard from "../../components/MeditationSessionCard";
 
 export default function MyMeditationSessionsPage() {
     const [sessions, setSessions] = useState<MeditationSession[]>([]);

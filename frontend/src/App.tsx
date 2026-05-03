@@ -5,8 +5,10 @@ import MeditationByIdPage from "./pages/meditation/MeditationByIdPage";
 import SignUpPage from "./pages/user/SignUpPage";
 import LoginPage from "./pages/user/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
-import CreateMeditationSessionPage from "./pages/CreateMeditationSessionPage";
-import MyMeditationSessionsPage from "./pages/MyMeditationSessionsPage";
+import CreateMeditationSessionPage from "./pages/meditation-sessions/CreateMeditationSessionPage";
+import MyMeditationSessionsPage from "./pages/meditation-sessions/MyMeditationSessionsPage";
+import DashboardPage from "./pages/user/DashboardPage";
+import MeditationSessionByIdPage from "./pages/meditation-sessions/MeditationSessionByIdPage";
 
 function App() {
   
@@ -42,6 +44,20 @@ function App() {
             <MyMeditationSessionsPage />
           </ProtectedRoute>
         }></Route>
+
+        <Route path="/meditation-sessions/:id" element={
+          <ProtectedRoute>
+            <MeditationSessionByIdPage />
+          </ProtectedRoute>
+        }></Route>
+
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        }>
+        </Route>
+
       </Routes>
       </BrowserRouter>
   )

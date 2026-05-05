@@ -11,6 +11,7 @@ import DashboardPage from "./pages/user/DashboardPage";
 import MeditationSessionByIdPage from "./pages/meditation-sessions/MeditationSessionByIdPage";
 import AboutUs from "./pages/AboutUs";
 import SessionsWithMeditationPage from "./pages/meditation-sessions/SessionsWithMeditationPage";
+import Footer from "./components/Footer";
 
 function App() {
   
@@ -92,6 +93,7 @@ function App() {
         </Route>
 
       </Routes>
+      <Footer />
       </BrowserRouter>
   )
 }

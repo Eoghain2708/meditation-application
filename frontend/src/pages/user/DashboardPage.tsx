@@ -23,7 +23,6 @@ export default function DashboardPage() {
     return (
         <div className="max-w-4xl mx-auto px-6 py-10 space-y-10">
 
-    {/* Header */}
     <header className="space-y-2">
       <h1 className="text-3xl font-semibold">
         Welcome back, {normaliseName(data.username)}!
@@ -33,26 +32,25 @@ export default function DashboardPage() {
       </p>
     </header>
 
-    {/* Stats */}
+  
     <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-      <div className="shadow-md rounded-xl p-6 bg-gray-900">
-        <p className="text-sm text-gray-500">Minutes Meditated</p>
-        <p className="text-3xl font-bold text-purple-400">
+      <div className="shadow-md rounded-xl p-6 bg-green-400">
+        <p className="text-sm text-gray-900">Minutes Meditated</p>
+        <p className="text-3xl font-bold text-purple-700">
           {data.minutes_meditated}
         </p>
       </div>
 
-      <div className="shadow-md rounded-xl p-6 bg-gray-900">
-        <p className="text-sm text-gray-500">Total Sessions</p>
-        <p className="text-3xl font-bold text-purple-400">
+      <div className="shadow-md rounded-xl p-6 bg-blue-400">
+        <p className="text-sm text-gray-900">Total Sessions</p>
+        <p className="text-3xl font-bold text-purple-700">
           {data.total_sessions}
         </p>
       </div>
 
     </section>
 
-    {/* Recent Session */}
     <section className="space-y-4">
       <h2 className="text-xl font-semibold">
         Most Recent Session

@@ -9,6 +9,7 @@ import CreateMeditationSessionPage from "./pages/meditation-sessions/CreateMedit
 import MyMeditationSessionsPage from "./pages/meditation-sessions/MyMeditationSessionsPage";
 import DashboardPage from "./pages/user/DashboardPage";
 import MeditationSessionByIdPage from "./pages/meditation-sessions/MeditationSessionByIdPage";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   
@@ -20,6 +21,12 @@ function App() {
         <Route path="/" element={<SignUpPage />} />
 
         <Route path="/login" element={<LoginPage /> }/>
+
+        <Route path="/about-us" element={
+          <ProtectedRoute>
+          <AboutUs />
+          </ProtectedRoute>
+          }/>
 
         <Route path="/meditations" element={
           <ProtectedRoute>

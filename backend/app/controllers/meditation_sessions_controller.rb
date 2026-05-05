@@ -3,7 +3,7 @@ class MeditationSessionsController < ApplicationController
 
   # GET /meditation_sessions (for current user)
   def index
-    @meditation_sessions = @current_user.meditation_sessions
+    @meditation_sessions = @current_user.meditation_sessions.order(created_at: :desc)
     render json: @meditation_sessions
   end
 

@@ -40,13 +40,12 @@ export default function MeditationSessionByIdPage() {
     return (
         <div className="max-w-3xl mx-auto px-6 py-10 space-y-8">
 
-    {/* Header */}
     <header className="space-y-2">
       <h1 className="text-3xl font-semibold">
         Meditation Session
       </h1>
 
-      <p className="text-gray-500">
+      <p className="text-gray-200">
         {new Date(session.created_at).toLocaleString("en-GB", {
           day: "numeric",
           month: "long",
@@ -57,28 +56,27 @@ export default function MeditationSessionByIdPage() {
       </p>
     </header>
 
-    {/* Meditation Info Card */}
-    <section className="rounded-xl shadow-md p-6 space-y-3">
+   
+    <section className="rounded-xl shadow-xl bg-gray-900/20 p-6 space-y-3">
 
-      <h2 className="text-xl font-semibold text-purple-600">
+      <h2 className="text-xl font-semibold py-5">
         {session.meditation.title}
       </h2>
 
-      <p className="text-sm capitalize">
+      <p className="font-bold text-lg capitalize text-purple-400 py-5">
         {session.meditation.category}
       </p>
 
-      <div className="flex items-center gap-6 pt-3">
+      <div className="flex flex-row justify-between pt-3 min-w-full">
 
         <div>
-          <p className="text-sm">Duration</p>
-          <p className="text-lg font-medium">
+          <p className="text-lg font-bold">
             {session.duration} minutes
           </p>
         </div>
 
+        <div className="flex flex-col">
         <div>
-          <p className="text-sm">Visibility</p>
           <span
             className={`px-3 py-1 rounded-full text-sm font-medium ${
               session.public
@@ -89,26 +87,29 @@ export default function MeditationSessionByIdPage() {
             {session.public ? "Public" : "Private"}
           </span>
         </div>
-
+        <div className="mt-5">
+          <span className="rounded-full bg-red-500 px-5.5 hover:bg-red-500/50 py-0.5">🗑️</span>
+        </div>
+        </div>
       </div>
     </section>
 
-    {/* Notes */}
-    <section className="rounded-xl shadow-md p-6 space-y-4">
+   
+    <section className="rounded-xl shadow-xl space-y-4 bg-gray-900/20">
       <h3 className="text-lg font-semibold">Session Notes</h3>
 
       {session.notes ? (
-        <p className="whitespace-pre-line text-gray-700 leading-relaxed">
+        <p className="whitespace-pre-line text-gray-200 leading-relaxed text-left py-3 px-5">
           {session.notes}
         </p>
       ) : (
-        <p className="text-gray-400 italic">
+        <p className="text-gray-200 italic">
           No notes recorded for this session.
         </p>
       )}
     </section>
 
-    {/* Navigation */}
+  
     <div className="pt-4">
       <Link
         to="/meditation-sessions"

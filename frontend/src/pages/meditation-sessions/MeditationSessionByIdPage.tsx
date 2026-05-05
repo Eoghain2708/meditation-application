@@ -5,6 +5,7 @@ import NotFound from "../../components/NotFound";
 import { useParams } from "react-router-dom";
 import LoadingPage from "../LoadingPage";
 import { Link } from "react-router-dom";
+import BackLink from "../../components/links/BackLink"
 
 export default function MeditationSessionByIdPage() {
     const { id } = useParams();
@@ -115,7 +116,7 @@ export default function MeditationSessionByIdPage() {
         to="/meditation-sessions"
         className="text-purple-400 hover:underline"
       >
-        <span className="text-xl font-bold">←</span> Back to all sessions
+        <BackLink text="Back to all sessions" />
       </Link>
     </div>
 

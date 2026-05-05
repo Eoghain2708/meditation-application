@@ -11,7 +11,7 @@ export default function MyMeditationSessionsPage() {
         getMyMeditationSessions().then(setSessions);
     }, []);
 
-    if (sessions.length < 1) {
+    if (!sessions || sessions.length < 1) {
         return (
             <div>
                 <h2>No sessions found...</h2>

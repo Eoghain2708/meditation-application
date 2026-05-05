@@ -16,15 +16,17 @@ export default function MeditationSessionCard({ meditationSession }: Props) {
         <div className="  duration-200  
           block
           shadow-md
-          py-5
-          my-5
+          pt-2
+          pb-3
+          mb-5
+          mt-3
           hover:shadow-xl
           hover:scale-105  
           transition
           rounded-xl
           bg-purple-900/10
           mx-auto
-          max-w-1/2">
+          w-11/12">
         <h2 className="py-2">Session{" "}<span>{createdAt.toLocaleString("en-GB", {
             day: "numeric",
             month: "long",

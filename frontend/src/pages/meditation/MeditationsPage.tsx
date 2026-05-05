@@ -18,7 +18,7 @@ export default function MeditationsPage() {
     getMeditations(queryString).then(setMeditations);
   }, [searchParams]);
 
-  if (meditations.length < 1) {
+  if (!meditations || meditations.length < 1) {
     return (
       <>
       <div className="max-w-7xl mx-auto px-6 py-10">

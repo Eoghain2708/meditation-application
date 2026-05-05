@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BackLink from "./links/BackLink"
 
 type Props = {
   title: string;
@@ -27,7 +28,7 @@ export default function MeditationNotFoundComponent({
         )}
       </p>
       <Link to="/meditations">
-        <p className="text-purple-600 py-5">Back to meditations</p>
+        <BackLink text="Back to meditations" />
       </Link>
     </div>
   );

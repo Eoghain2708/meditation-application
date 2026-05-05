@@ -18,7 +18,7 @@ export default function LoginPage() {
         try {
             const data = await login(email, password);
             saveToken(data.token);
-            navigate("/meditations")
+            navigate("/dashboard")
         } catch {
             alert("Invalid email or password")
         }

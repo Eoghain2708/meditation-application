@@ -24,6 +24,8 @@ export default function MyMeditationSessionsPage() {
     }
 
     return (
+        <>
+        <p className="text-5xl pt-10 pb-2 font-light">Your meditations</p>
         <div>
             {sessions.map((session) => (
                 <Link to={`/meditation-sessions/${session.id}`} className="group">
@@ -31,6 +33,7 @@ export default function MyMeditationSessionsPage() {
                 </Link>
             ))}
         </div>
+        </>
     )
 
 

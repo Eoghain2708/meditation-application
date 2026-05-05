@@ -13,6 +13,7 @@ class Meditation < ApplicationRecord
     CATEGORIES.values
   end
 
+
   validates :title, uniqueness: true, presence: true
   validates :category, presence: true, inclusion: { in: CATEGORIES.values }
   normalizes :category, with: ->(category) { category.strip.downcase }

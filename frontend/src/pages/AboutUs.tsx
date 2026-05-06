@@ -4,7 +4,7 @@ export default function AboutUs() {
         <header>
             <h1>About us</h1>
         </header>
-        <main className="mt-20 mb-123.5">
+        <main>
         <p>OnlyPeace is a website designed for beginners interested in meditation and veteran sitters. Here, you will find hundreds of meditation practices
             originating from different traditions and parts of the world. We believe in practicality, and the idea that any and every type of meditation category 
             has something to offer, whether it's Buddhist, Advaitan, or a totally modern creation by one of the many teachers that inhabit this space. If it brings

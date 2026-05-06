@@ -42,7 +42,7 @@ export default function SessionsWithMeditationPage() {
     }
 
     return (
-        <>
+        <div className="mt-10">
         <div className="fixed top-1 left-1 mt-16.5 py-2 px-3 md:px-2 sm:px-1 bg-emerald-300/20  rounded-lg font-bold z-50 sm:" >
         <Link to={`/meditations/${id}`}>
             <BackLink text="Back to meditation"/>
@@ -54,6 +54,6 @@ export default function SessionsWithMeditationPage() {
         <MeditationSessionCard meditationSession={s} />
         </>
        ))}
-       </>
+       </div>
     )
 }

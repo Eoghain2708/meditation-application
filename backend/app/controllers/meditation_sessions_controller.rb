@@ -1,14 +1,14 @@
 class MeditationSessionsController < ApplicationController
-  before_action :set_meditation_session, only: %i[ show destroy ]
+  before_action :set_meditation_session, only: %i[ show destroy update ]
 
-  # GET /meditation_sessions (for current user)
+  # GET /meditation-sessions (for current user)
   def index
     @meditation_sessions = @current_user.meditation_sessions.order(created_at: :desc)
     render json: @meditation_sessions
   end
 
 
-  # GET /meditation_sessions/:id
+  # GET /meditation-sessions/:id
   def show
     render json: @meditation_session
   end
@@ -25,14 +25,21 @@ class MeditationSessionsController < ApplicationController
     end
   end
 
+  # PATCH /meditation-sessions/:id
+  def update
+    if @meditation_session.update(update_params)
+      render json: @meditation_session, status: :ok
+    else
+      render json: @meditation_session.errors, status: :unprocessable_content
+    end
+  end
 
-  # DELETE /meditation_sessions/1
+  # DELETE /meditation-sessions/1
   def destroy
     @meditation_session.destroy!
   end
 
   private
-
     # Use callbacks to share common setup or constraints between actions.
     def set_meditation_session
       @meditation_session = @current_user.meditation_sessions.find(params[:id])
@@ -41,5 +48,9 @@ class MeditationSessionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def meditation_session_params
       params.expect(meditation_session: [ :meditation_id, :notes, :public, :duration ])
+    end
+
+    def update_params
+      params.permit(:public)
     end
 end

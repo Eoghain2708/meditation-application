@@ -13,6 +13,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    user = @curent_user
+    if user.update(update_params())
+      render json: user, serializer: UserSerializer, meta: { token: token }, status: :ok
+    else
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+
   def me
     user = @current_user
     sessions = user.meditation_sessions
@@ -34,11 +44,14 @@ class UsersController < ApplicationController
         }
       }
     }
-
   end
 
   private
   def user_params
     params.permit(:email, :password, :password_confirmation, :bio, :username)
+  end
+
+  def update_params
+    params.permit(:bio)
   end
 end

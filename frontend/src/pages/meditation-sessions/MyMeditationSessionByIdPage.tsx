@@ -6,9 +6,29 @@ import { useParams } from "react-router-dom";
 import LoadingPage from "../LoadingPage";
 import { Link } from "react-router-dom";
 import BackLink from "../../components/links/BackLink"
+import { useNavigate } from "react-router-dom";
+import { deleteMeditationSession } from "../../api/meditation-sessions/myMeditationSessions";
+import { changePrivacy } from "../../api/meditation-sessions/changePrivacy";
+
 
 export default function MeditationSessionByIdPage() {
     const { id } = useParams();
+    const navigate = useNavigate();
+
+    // delete function
+    const handleDelete = async () => {
+
+      const confirmed = window.confirm("Are you sure you want to delete this meditation?")
+
+      if (!confirmed) { return; }
+
+      try {
+        await deleteMeditationSession(Number(id))
+        navigate("/meditation-sessions")
+      } catch {
+        alert("Failed to delete meditation");
+      }
+    }
 
     const [session, setSession] = useState<MeditationSession | null>(null);
     const [loading, setLoading] = useState(true);
@@ -29,6 +49,24 @@ export default function MeditationSessionByIdPage() {
 
         loadSession()
     }, [id])
+
+    const handlePrivacyChange = async () => {
+      const newPrivacy: boolean = !session.public
+
+      const confirmed = window.confirm(`Are you sure you want to make this session 
+        ${newPrivacy ? "public" : "private"}?`);
+      
+      if (!confirmed) { return; }
+
+      try {
+        await changePrivacy(Number(id), newPrivacy);
+        setSession(prev => prev ? {...prev, public: newPrivacy} : prev)
+      } catch (err) {
+        console.log(err);
+        alert("Error changing session privacy");
+      }
+    }
+
 
     if (loading) {
         return <LoadingPage />
@@ -78,7 +116,7 @@ export default function MeditationSessionByIdPage() {
 
         <div className="flex flex-col">
         <div>
-          <span
+          <button onClick={handlePrivacyChange}
             className={`px-3 py-1 rounded-full text-sm font-medium ${
               session.public
                 ? "bg-green-100 text-green-700"
@@ -86,10 +124,10 @@ export default function MeditationSessionByIdPage() {
             }`}
           >
             {session.public ? "Public" : "Private"}
-          </span>
+          </button>
         </div>
         <div className="mt-5">
-          <span className="rounded-full bg-red-500 px-5.5 hover:bg-red-500/50 py-0.5">🗑️</span>
+          <button onClick={handleDelete}className="rounded-full bg-red-500 px-5.5 hover:bg-red-500/50 py-0.5">🗑️</button>
         </div>
         </div>
       </div>

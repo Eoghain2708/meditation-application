@@ -8,7 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import CreateMeditationSessionPage from "./pages/meditation-sessions/CreateMeditationSessionPage";
 import MyMeditationSessionsPage from "./pages/meditation-sessions/MyMeditationSessionsPage";
 import DashboardPage from "./pages/user/DashboardPage";
-import MeditationSessionByIdPage from "./pages/meditation-sessions/MeditationSessionByIdPage";
+import MyMeditationSessionByIdPage from "./pages/meditation-sessions/MyMeditationSessionByIdPage";
 import AboutUs from "./pages/AboutUs";
 import SessionsWithMeditationPage from "./pages/meditation-sessions/SessionsWithMeditationPage";
 import Footer from "./components/Footer";
@@ -72,7 +72,7 @@ function App() {
 
         <Route path="/meditation-sessions/:id" element={
           <ProtectedRoute>
-            <MeditationSessionByIdPage />
+            <MyMeditationSessionByIdPage />
           </ProtectedRoute>
         }></Route>
 

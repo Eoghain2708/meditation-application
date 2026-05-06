@@ -43,11 +43,11 @@ export default function SessionsWithMeditationPage() {
 
     return (
         <>
-        <div className="fixed top-1 left-1 mt-16.5 py-2 px-5 rounded-lg font-bold" >
+        <div className="fixed top-1 left-1 mt-16.5 py-2 px-3 md:px-2 sm:px-1 bg-emerald-300/20  rounded-lg font-bold z-50 sm:" >
         <Link to={`/meditations/${id}`}>
             <BackLink text="Back to meditation"/>
             </Link>
-            </div>
+        </div>
         {sessions.map((s) => (
         <>
         <h2 className="capitalize pt-3">By: {s.user.username}</h2>

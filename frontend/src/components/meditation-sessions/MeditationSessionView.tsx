@@ -1,6 +1,4 @@
 import type { MeditationSession } from "../../types/MeditationSession";
-import BackLink from "../links/BackLink"
-import { Link } from "react-router-dom";
 
 type Props = {
     session: MeditationSession

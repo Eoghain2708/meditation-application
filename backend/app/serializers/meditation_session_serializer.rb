@@ -6,7 +6,8 @@ class MeditationSessionSerializer < ActiveModel::Serializer
   def user
     {
       id: object.user_id,
-      username: object.user.username
+      username: object.user.username,
+      email: object.user.email
     }
   end
 

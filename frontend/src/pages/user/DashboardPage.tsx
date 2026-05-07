@@ -5,7 +5,7 @@ import LoadingPage from "../LoadingPage";
 import { Link } from "react-router-dom";
 import getCleanDate from "../../helpers/cleanDate";
 import normaliseName from "../../helpers/normaliseName";
-import Button from "../../components/Button";
+import Button from "../../components/elements/Button";
 
 export default function DashboardPage() {
     const [data, setData] = useState<DashboardData | null>(null);
@@ -15,6 +15,23 @@ export default function DashboardPage() {
 
     if (!data) {
         return <LoadingPage />
+    }
+
+
+    if (!data.recent_session) {
+      return (
+        <div className="max-w-4xl mx-auto px-6 py-10 space-y-10">
+          <header className="space-y-2">
+          <h1 className="text-3xl font-semibold">
+          Welcome back, {normaliseName(data.username)}!
+        </h1>
+        </header>
+        <p>You have no meditation sessions to show...</p>
+        <Link to="/meditations">
+        <Button text="Create a new session" />
+      </Link>
+        </div>
+      )
     }
 
     const session = data.recent_session;
@@ -52,6 +69,8 @@ export default function DashboardPage() {
     </section>
 
     <section className="space-y-4">
+      {data.total_sessions > 0 && 
+      <>
       <h2 className="text-xl font-semibold">
         Most Recent Session
       </h2>
@@ -100,6 +119,8 @@ export default function DashboardPage() {
       <Link to="/meditations">
         <Button text="Create a new session" />
       </Link>
+      </>
+        }
     </section>
     </div>
   )

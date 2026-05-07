@@ -18,6 +18,7 @@ export default function LoginPage() {
         try {
             const data = await login(email, password);
             saveToken(data.token);
+            localStorage.setItem("user_id", data.user.id.toString());
             navigate("/dashboard")
         } catch {
             alert("Invalid email or password")

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import BackLink from "./links/BackLink"
+import BackLink from "../links/BackLink"
 
 type Props = {
   title: string;

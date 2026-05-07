@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { Navigate } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "./elements/Navbar";
 
 
 export default function ProtectedRoute({ children, }: { children: JSX.Element; }) {

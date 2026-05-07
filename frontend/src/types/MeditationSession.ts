@@ -5,6 +5,7 @@ export interface MeditationSession {
 
     user: {
         id: number,
+        email: string,
         username: string
     };
 

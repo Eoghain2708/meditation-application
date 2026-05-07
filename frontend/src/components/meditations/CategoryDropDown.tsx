@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { getCategories } from "../api/categories/categories";
+import { getCategories } from "../../api/categories/categories";
 
 export default function CategoryDropDown() {
     const [ categories, setCategories ] = useState<string[]>([]);

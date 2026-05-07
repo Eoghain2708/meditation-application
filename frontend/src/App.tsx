@@ -11,7 +11,7 @@ import DashboardPage from "./pages/user/DashboardPage";
 import MyMeditationSessionByIdPage from "./pages/meditation-sessions/MyMeditationSessionByIdPage";
 import AboutUs from "./pages/AboutUs";
 import SessionsWithMeditationPage from "./pages/meditation-sessions/SessionsWithMeditationPage";
-import Footer from "./components/Footer";
+import Footer from "./components/elements/Footer";
 
 function App() {
   

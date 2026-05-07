@@ -1,5 +1,5 @@
 import type { MeditationSession } from "../../types/MeditationSession";
-import MeditationSessionCard from "../../components/MeditationSessionCard";
+import MeditationSessionCard from "../../components/meditation-sessions/MeditationSessionCard";
 import { useEffect, useState } from "react";
 import { getSessionsByMeditation } from "../../api/meditation-sessions/meditationMeditationSessions";
 import { Link, useParams } from "react-router-dom";
@@ -42,7 +42,7 @@ export default function SessionsWithMeditationPage() {
     }
 
     return (
-        <div className="mt-10">
+        <div className="tmt-10">
         <div className="fixed top-1 left-1 mt-16.5 py-2 px-3 md:px-2 sm:px-1 bg-emerald-300/20  rounded-lg font-bold z-50 sm:" >
         <Link to={`/meditations/${id}`}>
             <BackLink text="Back to meditation"/>

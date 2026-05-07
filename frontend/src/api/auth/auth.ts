@@ -30,7 +30,7 @@ export async function login(email:string, password:string) {
     if (!response.ok) {
         throw new Error("Error logging in");
     }
-
+    
     return response.json() as Promise<LoginResponse>;
 }
 

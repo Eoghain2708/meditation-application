@@ -3,6 +3,7 @@ import { getMyMeditationSessions } from "../../api/meditation-sessions/myMeditat
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MeditationSessionCard from "../../components/meditation-sessions/MeditationSessionCard";
+import BackLink from "../../components/links/BackLink"
 
 export default function MyMeditationSessionsPage() {
     const [sessions, setSessions] = useState<MeditationSession[]>([]);

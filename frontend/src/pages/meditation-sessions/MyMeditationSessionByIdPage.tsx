@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { deleteMeditationSession } from "../../api/meditation-sessions/myMeditationSessions";
 import { changePrivacy } from "../../api/meditation-sessions/changePrivacy";
 import MeditationSessionView from "../../components/meditation-sessions/MeditationSessionView";
+import { Link } from "react-router-dom";
+import BackLink from "../../components/links/BackLink"
 
 
 export default function MeditationSessionByIdPage() {
@@ -80,7 +82,12 @@ export default function MeditationSessionByIdPage() {
     
 
     return (
+      <>
       <MeditationSessionView session={session} isOwner={isOwner} onDelete={handleDelete} onPrivacyChange={handlePrivacyChange} />
+       <Link to="/meditation-sessions">
+        <BackLink text="Back to all sessions" />
+      </Link>
+      </>
     )
 
 }

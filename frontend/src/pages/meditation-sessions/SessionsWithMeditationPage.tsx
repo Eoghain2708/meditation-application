@@ -50,8 +50,11 @@ export default function SessionsWithMeditationPage() {
         </div>
         {sessions.map((s) => (
         <>
-        <h2 className="capitalize pt-3">By: {s.user.username}</h2>
+
+        <p className="capitalize pt-2 text-small">By: {s.user.username}</p>
+        <Link to={`/meditations/${id}/sessions/${s.id}`}>
         <MeditationSessionCard meditationSession={s} />
+        </Link>
         </>
        ))}
        </div>

@@ -12,6 +12,7 @@ import MyMeditationSessionByIdPage from "./pages/meditation-sessions/MyMeditatio
 import AboutUs from "./pages/AboutUs";
 import SessionsWithMeditationPage from "./pages/meditation-sessions/SessionsWithMeditationPage";
 import Footer from "./components/elements/Footer";
+import SessionWithMeditationIdPage from "./pages/meditation-sessions/SessionWIthMeditationIdPage";
 
 function App() {
   
@@ -80,6 +81,12 @@ function App() {
         <Route path="/meditations/:id/sessions" element={
           <ProtectedRoute>
             <SessionsWithMeditationPage />
+          </ProtectedRoute>
+        }></Route>
+
+        <Route path="/meditations/:meditationId/sessions/:id" element={
+          <ProtectedRoute>
+            <SessionWithMeditationIdPage />
           </ProtectedRoute>
         }></Route>
 

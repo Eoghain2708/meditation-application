@@ -71,10 +71,6 @@ export default function MeditationSessionView( { session, isOwner = false, onDel
           </p>
         )}
       </section>
-
-      <Link to="/meditation-sessions">
-        <BackLink text="Back to all sessions" />
-      </Link>
     </div>
     )
 }

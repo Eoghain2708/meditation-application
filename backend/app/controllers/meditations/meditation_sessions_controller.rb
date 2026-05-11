@@ -4,7 +4,12 @@ class Meditations::MeditationSessionsController < ApplicationController
 
   # GET /meditations/:meditation_id/sessions
   def index
-    @sessions = @meditation.meditation_sessions.that_are_public.includes(:user, :meditation)
+    @sessions = @meditation
+                  .meditation_sessions
+                  .that_are_public
+                  .includes(:user, :meditation)
+                  .order(created_at: :desc)
+
     render json: @sessions
   end
 

@@ -8,19 +8,42 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import CreateMeditationSessionPage from "./pages/meditation-sessions/CreateMeditationSessionPage";
 import MyMeditationSessionsPage from "./pages/meditation-sessions/MyMeditationSessionsPage";
 import DashboardPage from "./pages/user/DashboardPage";
-import MeditationSessionByIdPage from "./pages/meditation-sessions/MeditationSessionByIdPage";
+import MyMeditationSessionByIdPage from "./pages/meditation-sessions/MyMeditationSessionByIdPage";
+import AboutUs from "./pages/AboutUs";
+import SessionsWithMeditationPage from "./pages/meditation-sessions/SessionsWithMeditationPage";
+import Footer from "./components/elements/Footer";
+import SessionWithMeditationIdPage from "./pages/meditation-sessions/SessionWIthMeditationIdPage";
 
 function App() {
   
 
   return (
+    <div className="grid grid-rows-[auto_1fr_auto] h-lvh">
       <BrowserRouter>
       <Routes>
+
+
+        {
+        // login and signup
+        }
 
         <Route path="/" element={<SignUpPage />} />
 
         <Route path="/login" element={<LoginPage /> }/>
 
+
+        {
+        // about
+        }
+        <Route path="/about-us" element={
+          <ProtectedRoute>
+          <AboutUs />
+          </ProtectedRoute>
+          }/>
+
+        {
+        // meditations
+        }
         <Route path="/meditations" element={
           <ProtectedRoute>
           <MeditationsPage/>
@@ -39,6 +62,10 @@ function App() {
           </ProtectedRoute>
         }></Route>
 
+        {
+        // meditation sessions
+        }
+
         <Route path="/meditation-sessions" element={
           <ProtectedRoute>
             <MyMeditationSessionsPage />
@@ -47,10 +74,25 @@ function App() {
 
         <Route path="/meditation-sessions/:id" element={
           <ProtectedRoute>
-            <MeditationSessionByIdPage />
+            <MyMeditationSessionByIdPage />
           </ProtectedRoute>
         }></Route>
 
+        <Route path="/meditations/:id/sessions" element={
+          <ProtectedRoute>
+            <SessionsWithMeditationPage />
+          </ProtectedRoute>
+        }></Route>
+
+        <Route path="/meditations/:meditationId/sessions/:id" element={
+          <ProtectedRoute>
+            <SessionWithMeditationIdPage />
+          </ProtectedRoute>
+        }></Route>
+
+        {
+        // home page
+        }
         <Route path="/dashboard" element={
           <ProtectedRoute>
             <DashboardPage />
@@ -59,7 +101,9 @@ function App() {
         </Route>
 
       </Routes>
+      <Footer />
       </BrowserRouter>
+      </div>
   )
 }
 

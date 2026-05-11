@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Meditation } from "../../types/Meditation";
 import { getMeditations } from "../../api/meditations";
-import MeditationCard from "../../components/MeditationCard";
+import MeditationCard from "../../components/meditations/MeditationCard";
 import { useSearchParams } from "react-router-dom";
-import SearchBar from "../../components/SearchBar";
-import CategoryDropDown from "../../components/CategoryDropDown";
-import MeditationNotFoundComponent from "../../components/MeditationNotFoundComponent";
+import SearchBar from "../../components/meditations/SearchBar";
+import CategoryDropDown from "../../components/meditations/CategoryDropDown";
+import MeditationNotFoundComponent from "../../components/meditations/MeditationNotFoundComponent";
 
 export default function MeditationsPage() {
   const [meditations, setMeditations] = useState<Meditation[]>([]);
@@ -18,7 +18,7 @@ export default function MeditationsPage() {
     getMeditations(queryString).then(setMeditations);
   }, [searchParams]);
 
-  if (meditations.length < 1) {
+  if (!meditations || meditations.length < 1) {
     return (
       <>
       <div className="max-w-7xl mx-auto px-6 py-10">

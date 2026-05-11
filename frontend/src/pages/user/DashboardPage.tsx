@@ -5,7 +5,7 @@ import LoadingPage from "../LoadingPage";
 import { Link } from "react-router-dom";
 import getCleanDate from "../../helpers/cleanDate";
 import normaliseName from "../../helpers/normaliseName";
-import Button from "../../components/Button";
+import Button from "../../components/elements/Button";
 
 export default function DashboardPage() {
     const [data, setData] = useState<DashboardData | null>(null);
@@ -17,13 +17,29 @@ export default function DashboardPage() {
         return <LoadingPage />
     }
 
+
+    if (!data.recent_session) {
+      return (
+        <div className="max-w-4xl mx-auto px-6 py-10 space-y-10">
+          <header className="space-y-2">
+          <h1 className="text-3xl font-semibold">
+          Welcome back, {normaliseName(data.username)}!
+        </h1>
+        </header>
+        <p>You have no meditation sessions to show...</p>
+        <Link to="/meditations">
+        <Button text="Create a new session" />
+      </Link>
+        </div>
+      )
+    }
+
     const session = data.recent_session;
     const meditation = session.meditation;
 
     return (
         <div className="max-w-4xl mx-auto px-6 py-10 space-y-10">
 
-    {/* Header */}
     <header className="space-y-2">
       <h1 className="text-3xl font-semibold">
         Welcome back, {normaliseName(data.username)}!
@@ -33,27 +49,28 @@ export default function DashboardPage() {
       </p>
     </header>
 
-    {/* Stats */}
+  
     <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-      <div className="shadow-md rounded-xl p-6 bg-gray-900">
-        <p className="text-sm text-gray-500">Minutes Meditated</p>
-        <p className="text-3xl font-bold text-purple-400">
+      <div className="shadow-md rounded-xl p-6 bg-green-400">
+        <p className="text-sm text-gray-900">Minutes Meditated</p>
+        <p className="text-3xl font-bold text-purple-700">
           {data.minutes_meditated}
         </p>
       </div>
 
-      <div className="shadow-md rounded-xl p-6 bg-gray-900">
-        <p className="text-sm text-gray-500">Total Sessions</p>
-        <p className="text-3xl font-bold text-purple-400">
+      <div className="shadow-md rounded-xl p-6 bg-blue-400">
+        <p className="text-sm text-gray-900">Total Sessions</p>
+        <p className="text-3xl font-bold text-purple-700">
           {data.total_sessions}
         </p>
       </div>
 
     </section>
 
-    {/* Recent Session */}
     <section className="space-y-4">
+      {data.total_sessions > 0 && 
+      <>
       <h2 className="text-xl font-semibold">
         Most Recent Session
       </h2>
@@ -102,6 +119,8 @@ export default function DashboardPage() {
       <Link to="/meditations">
         <Button text="Create a new session" />
       </Link>
+      </>
+        }
     </section>
     </div>
   )

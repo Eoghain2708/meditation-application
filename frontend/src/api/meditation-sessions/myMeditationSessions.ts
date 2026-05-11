@@ -53,7 +53,7 @@ export async function createMeditationSession(data: MeditationSessionData): Prom
     return response.json();
 }
 
-export async function deleteMeditationSession(id: number): Promise<MeditationSession> {
+export async function deleteMeditationSession(id: number) {
     const token = localStorage.getItem("token");
     const response = await fetch(`${BASE_URL}/${id}`, {
         method: "DELETE",
@@ -62,5 +62,8 @@ export async function deleteMeditationSession(id: number): Promise<MeditationSes
             "Content-Type": "application/json"
         }
     })
-    return response.json();
+
+    if (!response.ok) {
+        throw new Error("Failed to delete session")
+    }
 }

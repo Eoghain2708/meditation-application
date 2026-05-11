@@ -1,4 +1,4 @@
-import type { Meditation } from "../types/Meditation";
+import type { Meditation } from "../../types/Meditation";
 
 type Props = {
     meditation: Meditation;

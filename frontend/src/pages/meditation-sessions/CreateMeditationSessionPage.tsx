@@ -34,7 +34,7 @@ export default function CreateMeditationSessionPage() {
 
         try {
             await createMeditationSession(formData);
-            navigate("/meditations");
+            navigate("/meditation-sessions");
         } catch {
             alert("Error creating meditation session");
         }

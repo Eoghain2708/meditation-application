@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :meditation_sessions, dependent: :destroy
 
+  scope :find_by_username, ->(username){ where("username LIKE ?", "%#{username.downcase}") if username.present?}
+
   private
   def set_username
     self.username = self.email.split("@").first

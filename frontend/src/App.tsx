@@ -13,6 +13,8 @@ import AboutUs from "./pages/AboutUs";
 import SessionsWithMeditationPage from "./pages/meditation-sessions/SessionsWithMeditationPage";
 import Footer from "./components/elements/Footer";
 import SessionWithMeditationIdPage from "./pages/meditation-sessions/SessionWIthMeditationIdPage";
+import UserMeditationSessionsPage from "./pages/meditation-sessions/UserMeditationSessions";
+import UserMeditationSessionByIdPage from "./pages/meditation-sessions/UserMeditationByIdPage";
 
 function App() {
   
@@ -87,6 +89,18 @@ function App() {
         <Route path="/meditations/:meditationId/sessions/:id" element={
           <ProtectedRoute>
             <SessionWithMeditationIdPage />
+          </ProtectedRoute>
+        }></Route>
+
+        <Route path="/users/:id" element={
+          <ProtectedRoute>
+            <UserMeditationSessionsPage />
+          </ProtectedRoute>
+        }></Route>
+
+        <Route path="/users/:userId/sessions/:meditationId" element={
+          <ProtectedRoute>
+            <UserMeditationSessionByIdPage />
           </ProtectedRoute>
         }></Route>
 

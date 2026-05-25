@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :meditation_sessions, dependent: :destroy
 
-  scope :find_by_username, ->(username){ where("username LIKE ?", "%#{username.downcase}") if username.present?}
+  scope :search_users, ->(username) { where("LOWER(username) LIKE ?", "%#{username.downcase}%") if username.present? }
 
   private
   def set_username

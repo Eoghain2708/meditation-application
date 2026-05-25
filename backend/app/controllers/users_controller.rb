@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user, only: [ :create ]
+  MAX_USERS_LIMIT = 25
 
   def index
-    @users = User.find_by_username(params[:username])
-    render json: @users.as_json(only: [ :id, :username ])
+    if params[:username].present?
+      @users = User.search_users(params[:username]).limit(MAX_USERS_LIMIT)
+      render json: @users.as_json(only: [ :id, :username ])
+    else
+      render json: []
+    end
+
   end
 
   def create
@@ -20,7 +26,7 @@ class UsersController < ApplicationController
 
   def update
     user = @current_user
-    if user.update(update_params())
+    if user.update(update_params)
       render json: user, serializer: UserSerializer, meta: { token: token }, status: :ok
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity

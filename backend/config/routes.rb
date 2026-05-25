@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post "/auth/signup",              to: "users#create"                  # done in front end
   post "/auth/login",               to: "auth#login"                    # done in front end
   get  "/me",                       to: "users#me"                      # done in front end
-  get "/users/:username",           to: "users#index"
+  get "/users/search/username",     to: "users#index"
 
   # Meditations
   get "/meditations",               to: "meditations#index"             # done in front end

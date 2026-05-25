@@ -1,15 +1,15 @@
 class Users::MeditationSessionsController < ApplicationController
-  before_action :set_user
+    before_action :set_user
 
-  def index
-    @meditation_sessions = @user.meditation_sessions.that_are_public
-
-    render json: { 
+    def index
+      @meditation_sessions = @user.meditation_sessions.that_are_public
+      render json: {
       username: @user.username,
       bio: @user.bio,
-      meditations: @meditation_sessions
+      meditations: ActiveModelSerializers::SerializableResource.new(
+        @meditation_sessions,
+        each_serializer: MeditationSessionSerializer)
      }
-
   end
 
   def show

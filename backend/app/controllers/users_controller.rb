@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.find_by_username(params[:username])
-    render json: @users
+    render json: @users.as_json(only: [ :id, :username ])
   end
 
   def create
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = @curent_user
+    user = @current_user
     if user.update(update_params())
       render json: user, serializer: UserSerializer, meta: { token: token }, status: :ok
     else

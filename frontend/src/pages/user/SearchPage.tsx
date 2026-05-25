@@ -30,12 +30,25 @@ export default function SearchPage() {
     return <LoadingPage />;
   }
 
+  if (!query) {
+    return (
+      <>
+        <div className="mt-10">
+          <h2>Search a user:</h2>
+          <SearchBar param="username" />
+        </div>
+      </>
+    );
+  }
+
   if (!users || users.length === 0) {
     return (
       <>
-        <SearchBar param="username" />
-        <div>
-          <p>No users found.</p>
+        <div className="mt-10">
+          <SearchBar param="username" />
+          <div>
+            <p>No users found.</p>
+          </div>
         </div>
       </>
     );
@@ -43,15 +56,15 @@ export default function SearchPage() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-evenly">
+      <div className="flex flex-col items-center justify-evenly mt-10">
         <SearchBar param="username" />
         <div>
           {users.map((user) => (
-            <div className="border border-gray-800 bg-gray-700 rounded-3xl shadow-md my-3 py-5 px-20 min-w-full hover:bg-gray-600">
-              <Link key={user.id} to={`/users/${user.id}`}>
+            <Link key={user.id} to={`/users/${user.id}`}>
+              <div className="border border-gray-800 bg-gray-700 rounded-3xl shadow-md my-3 py-5 px-20 min-w-full hover:bg-gray-600">
                 <p>{user.username}</p>
-              </Link>
-            </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

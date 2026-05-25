@@ -16,9 +16,18 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden md:flex gap-10 items-center">
-            <Link to="/dashboard" className="nav-link">Dashboard</Link>
-            <Link to="/meditations" className="nav-link">Meditations</Link>
-            <Link to="/meditation-sessions" className="nav-link">Sessions</Link>
+            <Link to="/dashboard" className="nav-link">
+              Dashboard
+            </Link>
+            <Link to="/meditations" className="nav-link">
+              Meditations
+            </Link>
+            <Link to="/meditation-sessions" className="nav-link">
+              Sessions
+            </Link>
+            <Link to="/users/search" className="nav-link text-red-300">
+              Search users ⌕
+            </Link>
           </div>
 
           <button
@@ -54,9 +63,18 @@ export default function Navbar() {
 
       {open && (
         <div className="md:hidden px-4 pb-4 pt-2 space-y-3 bg-zinc-900 border-t border-zinc-800 flex flex-col text-left">
-          <Link to="/dashboard" className="mobile-link">Dashboard</Link>
-          <Link to="/meditations" className="mobile-link">Meditations</Link>
-          <Link to="/meditation-sessions" className="mobile-link">Sessions</Link>
+          <Link to="/dashboard" className="mobile-link">
+            Dashboard
+          </Link>
+          <Link to="/meditations" className="mobile-link">
+            Meditations
+          </Link>
+          <Link to="/meditation-sessions" className="mobile-link">
+            Sessions
+          </Link>
+          <Link to="/users/search" className="nav-link">
+            Search users ⌕
+          </Link>
         </div>
       )}
     </nav>

@@ -1,7 +1,11 @@
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 
-export default function SearchBar() {
+type Props = {
+  param: string;
+};
+
+export default function SearchBar({ param }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [input, setInput] = useState("");
 
@@ -10,9 +14,9 @@ export default function SearchBar() {
     const params = new URLSearchParams(searchParams);
 
     if (input) {
-      params.set("title", input);
+      params.set(param, input);
     } else {
-      params.delete("title");
+      params.delete(param);
     }
 
     setSearchParams(params);
@@ -36,8 +40,7 @@ export default function SearchBar() {
             height="24"
             fill="none"
             viewBox="0 0 24 24"
-          >
-          </svg>
+          ></svg>
         </div>
         <input
           type="search"

@@ -8,21 +8,22 @@ Rails.application.routes.draw do
 
 
   # Authentication and Users
-  post "/auth/signup",              to: "users#create"                  # done in front end
-  post "/auth/login",               to: "auth#login"                    # done in front end
-  get  "/me",                       to: "users#me"                      # done in front end
+  post "/auth/signup",                to: "users#create"                  # done in front end
+  post "/auth/login",                 to: "auth#login"                    # done in front end
+  get  "/me",                         to: "users#me"                      # done in front end
+  get "/users/search",                to: "users#index"
 
   # Meditations
-  get "/meditations",               to: "meditations#index"             # done in front end
-  get "/meditations/:id",           to: "meditations#show"              # done in front end
-  get "/categories",                to: "meditations#category"          # done in front end
+  get "/meditations",                 to: "meditations#index"             # done in front end
+  get "/meditations/:id",             to: "meditations#show"              # done in front end
+  get "/categories",                  to: "meditations#category"          # done in front end
 
   # Meditation Sessions
-  get "/meditation-sessions",       to: "meditation_sessions#index"     # done in front end
-  get "/meditation-sessions/:id",   to: "meditation_sessions#show"      # done in front end
-  post "/meditation-sessions",      to: "meditation_sessions#create"    # done in front end
-  delete "/meditation-sessions/:id",to: "meditation_sessions#destroy"   # done in front end
-  patch "/meditation-sessions/:id", to: "meditation_sessions#update"    # done in front end
+  get "/meditation-sessions",         to: "meditation_sessions#index"     # done in front end
+  get "/meditation-sessions/:id",     to: "meditation_sessions#show"      # done in front end
+  post "/meditation-sessions",        to: "meditation_sessions#create"    # done in front end
+  delete "/meditation-sessions/:id",  to: "meditation_sessions#destroy"   # done in front end
+  patch "/meditation-sessions/:id",   to: "meditation_sessions#update"    # done in front end
 
   # Other User Meditation Sessions
   get "/users/:user_id/meditation-sessions",                            # ---needs done---

@@ -33,5 +33,7 @@ Meditation.destroy_all
   end
 end
 
+
+
 puts "Created #{User.count} users."
 puts "Created #{Meditation.count} meditations."

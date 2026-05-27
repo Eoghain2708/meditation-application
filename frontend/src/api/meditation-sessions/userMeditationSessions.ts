@@ -1,9 +1,10 @@
 import type { MeditationSession } from "../../types/MeditationSession";
 import { redirect } from "react-router-dom";
+import type { UserPageData } from "../../types/UserPageData";
 
 const BASE_URL = "http://localhost:3000/users"
 
-export async function getUserMeditationSessions(user_id: number): Promise<MeditationSession[]> {
+export async function getUserMeditationSessions(user_id: number): Promise<UserPageData> {
     const token = localStorage.getItem("token")
     const response = await fetch(`${BASE_URL}/${user_id}/meditation-sessions`, {
         headers: {

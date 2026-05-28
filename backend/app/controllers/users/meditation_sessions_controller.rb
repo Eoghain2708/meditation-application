@@ -6,6 +6,7 @@ class Users::MeditationSessionsController < ApplicationController
       render json: {
       username: @user.username,
       bio: @user.bio,
+      avatar_url: @user.avatar_url,
       meditations: ActiveModelSerializers::SerializableResource.new(
         @meditation_sessions,
         each_serializer: MeditationSessionSerializer)

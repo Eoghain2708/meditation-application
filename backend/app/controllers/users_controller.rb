@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def index
     if params[:username].present?
       @users = User.search_users(params[:username]).limit(MAX_USERS_LIMIT)
-      render json: @users.as_json(only: [ :id, :username ])
+      render json: @users.as_json(only: [ :id, :username, :avatar_url ])
     else
       render json: []
     end
@@ -53,16 +53,17 @@ class UsersController < ApplicationController
           title: recent_session.meditation.title,
           category: recent_session.meditation.category
         }
-      }
+      },
+      avatar_url: user.avatar_url
     }
   end
 
   private
   def user_params
-    params.permit(:email, :password, :password_confirmation, :bio, :username)
+    params.permit(:email, :username, :password, :password_confirmation)
   end
 
   def update_params
-    params.permit(:bio)
+    params.permit(:bio, :avatar)
   end
 end

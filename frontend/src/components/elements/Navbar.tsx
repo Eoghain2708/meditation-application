@@ -1,19 +1,34 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
+import defaultImage from "../../../src/default-avatar.avif";
 
 export default function Navbar() {
+  const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
 
   return (
     <nav className="bg-blue-900/20 border-b border-zinc-800">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link
-            to="/about-us"
-            className="text-xl font-semibold text-purple-400"
-          >
-            OnlyPeace
-          </Link>
+          <div className="flex flex-row items-center w-1/5 justify-between">
+            <Link to="/my-profile">
+              <img
+                src={
+                  currentUser?.avatar_url
+                    ? currentUser.avatar_url
+                    : defaultImage
+                }
+                className="rounded-full size-12 min-w-12 mr-5"
+              />
+            </Link>
+            <Link
+              to="/about-us"
+              className="text-xl font-semibold text-purple-400"
+            >
+              OnlyPeace
+            </Link>
+          </div>
 
           <div className="hidden md:flex gap-10 items-center">
             <Link to="/dashboard" className="nav-link">

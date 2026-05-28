@@ -16,149 +16,162 @@ import SessionWithMeditationIdPage from "./pages/meditation-sessions/SessionWIth
 import UserMeditationSessionsPage from "./pages/meditation-sessions/UserMeditationSessions";
 import UserMeditationSessionByIdPage from "./pages/meditation-sessions/UserMeditationByIdPage";
 import SearchPage from "./pages/user/SearchPage";
+import { AuthProvider } from "./contexts/authProvider";
+import EditInformationPage from "./pages/user/EditInformationPage";
 
 function App() {
   return (
-    <div className="min-h-lvh flex flex-col">
-      <BrowserRouter>
-        <main className="flex-1">
-          <Routes>
-            {
-              // login and signup
-            }
-
-            <Route path="/" element={<SignUpPage />} />
-
-            <Route path="/login" element={<LoginPage />} />
-
-            {
-              // about
-            }
-            <Route
-              path="/about-us"
-              element={
-                <ProtectedRoute>
-                  <AboutUs />
-                </ProtectedRoute>
+    <AuthProvider>
+      <div className="min-h-lvh flex flex-col">
+        <BrowserRouter>
+          <main className="flex-1">
+            <Routes>
+              {
+                // login and signup
               }
-            />
 
-            {
-              // meditations
-            }
-            <Route
-              path="/meditations"
-              element={
-                <ProtectedRoute>
-                  <MeditationsPage />
-                </ProtectedRoute>
+              <Route path="/" element={<SignUpPage />} />
+
+              <Route path="/login" element={<LoginPage />} />
+
+              {
+                // about
               }
-            />
+              <Route
+                path="/about-us"
+                element={
+                  <ProtectedRoute>
+                    <AboutUs />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/meditations/:id"
-              element={
-                <ProtectedRoute>
-                  <MeditationByIdPage />
-                </ProtectedRoute>
+              {
+                // meditations
               }
-            />
+              <Route
+                path="/meditations"
+                element={
+                  <ProtectedRoute>
+                    <MeditationsPage />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/meditations/:id/sessions/new"
-              element={
-                <ProtectedRoute>
-                  <CreateMeditationSessionPage />
-                </ProtectedRoute>
+              <Route
+                path="/meditations/:id"
+                element={
+                  <ProtectedRoute>
+                    <MeditationByIdPage />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/meditations/:id/sessions/new"
+                element={
+                  <ProtectedRoute>
+                    <CreateMeditationSessionPage />
+                  </ProtectedRoute>
+                }
+              ></Route>
+
+              {
+                // meditation sessions
               }
-            ></Route>
 
-            {
-              // meditation sessions
-            }
+              <Route
+                path="/meditation-sessions"
+                element={
+                  <ProtectedRoute>
+                    <MyMeditationSessionsPage />
+                  </ProtectedRoute>
+                }
+              ></Route>
 
-            <Route
-              path="/meditation-sessions"
-              element={
-                <ProtectedRoute>
-                  <MyMeditationSessionsPage />
-                </ProtectedRoute>
+              <Route
+                path="/meditation-sessions/:id"
+                element={
+                  <ProtectedRoute>
+                    <MyMeditationSessionByIdPage />
+                  </ProtectedRoute>
+                }
+              ></Route>
+
+              <Route
+                path="/meditations/:id/sessions"
+                element={
+                  <ProtectedRoute>
+                    <SessionsWithMeditationPage />
+                  </ProtectedRoute>
+                }
+              ></Route>
+
+              <Route
+                path="/meditations/:meditationId/sessions/:id"
+                element={
+                  <ProtectedRoute>
+                    <SessionWithMeditationIdPage />
+                  </ProtectedRoute>
+                }
+              ></Route>
+
+              <Route
+                path="/users/:id"
+                element={
+                  <ProtectedRoute>
+                    <UserMeditationSessionsPage />
+                  </ProtectedRoute>
+                }
+              ></Route>
+
+              <Route
+                path="/users/:userId/sessions/:meditationId"
+                element={
+                  <ProtectedRoute>
+                    <UserMeditationSessionByIdPage />
+                  </ProtectedRoute>
+                }
+              ></Route>
+
+              <Route
+                path="/my-profile"
+                element={
+                  <ProtectedRoute>
+                    <EditInformationPage />
+                  </ProtectedRoute>
+                }
+              ></Route>
+
+              {
+                // home page
               }
-            ></Route>
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <DashboardPage />
+                  </ProtectedRoute>
+                }
+              ></Route>
 
-            <Route
-              path="/meditation-sessions/:id"
-              element={
-                <ProtectedRoute>
-                  <MyMeditationSessionByIdPage />
-                </ProtectedRoute>
+              {
+                // User search feature
               }
-            ></Route>
-
-            <Route
-              path="/meditations/:id/sessions"
-              element={
-                <ProtectedRoute>
-                  <SessionsWithMeditationPage />
-                </ProtectedRoute>
-              }
-            ></Route>
-
-            <Route
-              path="/meditations/:meditationId/sessions/:id"
-              element={
-                <ProtectedRoute>
-                  <SessionWithMeditationIdPage />
-                </ProtectedRoute>
-              }
-            ></Route>
-
-            <Route
-              path="/users/:id"
-              element={
-                <ProtectedRoute>
-                  <UserMeditationSessionsPage />
-                </ProtectedRoute>
-              }
-            ></Route>
-
-            <Route
-              path="/users/:userId/sessions/:meditationId"
-              element={
-                <ProtectedRoute>
-                  <UserMeditationSessionByIdPage />
-                </ProtectedRoute>
-              }
-            ></Route>
-
-            {
-              // home page
-            }
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <DashboardPage />
-                </ProtectedRoute>
-              }
-            ></Route>
-
-            {
-              // User search feature
-            }
-            <Route
-              path="/users/search"
-              element={
-                <ProtectedRoute>
-                  <SearchPage />
-                </ProtectedRoute>
-              }
-            ></Route>
-          </Routes>
-        </main>
-        <Footer />
-      </BrowserRouter>
-    </div>
+              <Route
+                path="/users/search"
+                element={
+                  <ProtectedRoute>
+                    <SearchPage />
+                  </ProtectedRoute>
+                }
+              ></Route>
+            </Routes>
+          </main>
+          <Footer />
+        </BrowserRouter>
+      </div>
+    </AuthProvider>
   );
 }
 

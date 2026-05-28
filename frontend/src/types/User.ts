@@ -3,4 +3,5 @@ export interface User {
     emailAddress: string
     bio: string
     username: string
+    avatar_url: string
 }

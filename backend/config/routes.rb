@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post "/auth/login",                 to: "auth#login"                    # done in front end
   get  "/me",                         to: "users#me"                      # done in front end
   get "/users/search",                to: "users#index"
+  get "/users/current",               to: "users#current_user"
+  patch "/users/update",              to: "users#update"
 
   # Meditations
   get "/meditations",                 to: "meditations#index"             # done in front end

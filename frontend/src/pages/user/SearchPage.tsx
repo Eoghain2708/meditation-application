@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import LoadingPage from "../LoadingPage";
 import SearchBar from "../../components/meditations/SearchBar";
+import defaultImage from "../../../src/default-avatar.avif";
 
 export default function SearchPage() {
   const [searchParams] = useSearchParams();
@@ -58,11 +59,23 @@ export default function SearchPage() {
     <>
       <div className="flex flex-col items-center justify-evenly mt-10">
         <SearchBar param="username" />
-        <div>
+        <div className="w-2/3 sm:max-w-1/3">
           {users.map((user) => (
             <Link key={user.id} to={`/users/${user.id}`}>
-              <div className="border border-gray-800 bg-gray-700 rounded-3xl shadow-md my-3 py-5 px-20 min-w-full hover:bg-gray-600">
-                <p>{user.username}</p>
+              <div className="border-b-2 border-blue-700 hover:scale-103 duration-200 rounded-3xl shadow-md my-3 py-5 px-5 flex flex-row justify-evenly min-w-full">
+                <div className="flex flex-row items-center min-w-full">
+                  <div className="min-w-1/4">
+                    <img
+                      src={
+                        user.avatar_url ? `${user.avatar_url}` : defaultImage
+                      }
+                      className="rounded-full size-12"
+                    />
+                  </div>
+                  <div className="min-w-3/4">
+                    <p>{user.username}</p>
+                  </div>
+                </div>
               </div>
             </Link>
           ))}

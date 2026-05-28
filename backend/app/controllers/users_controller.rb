@@ -12,6 +12,10 @@ class UsersController < ApplicationController
 
   end
 
+  def current_user
+    @current_user if @current_user
+  end
+
   def create
     user = User.new(user_params)
 
@@ -27,6 +31,7 @@ class UsersController < ApplicationController
   def update
     user = @current_user
     if user.update(update_params)
+      token = JsonWebToken.encode(user_id: user.id)
       render json: user, serializer: UserSerializer, meta: { token: token }, status: :ok
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity

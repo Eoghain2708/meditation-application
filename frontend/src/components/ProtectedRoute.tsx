@@ -2,17 +2,21 @@ import type { JSX } from "react";
 import { Navigate } from "react-router-dom";
 import Navbar from "./elements/Navbar";
 
+export default function ProtectedRoute({
+  children,
+}: {
+  children: JSX.Element;
+}) {
+  const token = localStorage.getItem("token");
 
-export default function ProtectedRoute({ children, }: { children: JSX.Element; }) {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        return <Navigate to="/login" replace />
-    }
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
 
-    return ( 
-        <>
-        <Navbar />
-        {children}
-        </>
-    )
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
 }

@@ -1,19 +1,19 @@
 import type { MeditationSession } from "../../types/MeditationSession";
 
 type Props = {
-    meditationSession: MeditationSession;
-}
+  meditationSession: MeditationSession;
+};
 
 export default function MeditationSessionCard({ meditationSession }: Props) {
+  const createdAt = new Date(meditationSession.created_at);
 
-    const createdAt = new Date(meditationSession.created_at);
+  if (!meditationSession) {
+    return <p>Loading...</p>;
+  }
 
-    if (!meditationSession) {
-        return <p>Loading...</p>
-    }
-
-    return (
-        <div className="  duration-200  
+  return (
+    <div
+      className="  duration-200  
           block
           shadow-md
           pt-2
@@ -26,17 +26,31 @@ export default function MeditationSessionCard({ meditationSession }: Props) {
           rounded-xl
           bg-purple-900/10
           mx-auto
-          w-11/12">
-        <h2 className="py-2">Session{" "}<span>{createdAt.toLocaleString("en-GB", {
+          sm:max-w-1/2
+          w-full"
+    >
+      <h2 className="py-2">
+        Session{" "}
+        <span>
+          {createdAt.toLocaleString("en-GB", {
             day: "numeric",
             month: "long",
             year: "numeric",
             hour: "2-digit",
-            minute: "2-digit"
-        })}</span></h2>
-        <p className="text-purple-400 capitalize pt-3 pb-4">{meditationSession.meditation.category}</p>
-        <p className="font-bold">{meditationSession.meditation.title}</p>
-        <p className="text-sm">Duration: <span className="text-sm font-bold">{meditationSession.duration} minutes</span></p>
-        </div>
-    )
+            minute: "2-digit",
+          })}
+        </span>
+      </h2>
+      <p className="text-purple-400 capitalize pt-3 pb-4">
+        {meditationSession.meditation.category}
+      </p>
+      <p className="font-bold">{meditationSession.meditation.title}</p>
+      <p className="text-sm">
+        Duration:{" "}
+        <span className="text-sm font-bold">
+          {meditationSession.duration} minutes
+        </span>
+      </p>
+    </div>
+  );
 }

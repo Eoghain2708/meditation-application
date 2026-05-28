@@ -5,6 +5,7 @@ import LoadingPage from "../LoadingPage";
 import NotFound from "../../components/NotFound";
 import type { UserPageData } from "../../types/UserPageData";
 import MeditationSessionCard from "../../components/meditation-sessions/MeditationSessionCard";
+import defaultImage from "../../../src/default-avatar.avif";
 
 export default function UserMeditationSessionsPage() {
   const { id } = useParams();
@@ -38,8 +39,13 @@ export default function UserMeditationSessionsPage() {
   return (
     <>
       <h1>{pageData.username}</h1>
-
-      {pageData.bio && <p>{pageData.bio}</p>}
+      <div className="mt-2 mb-5 py-4">
+        {pageData.bio ? <p>{pageData.bio}</p> : <p>This user has no bio</p>}
+      </div>
+      <img
+        src={pageData.avatar_url ? `${pageData.avatar_url}` : defaultImage}
+        className="rounded-full size-20 mx-auto mb-10 object-cover"
+      />
 
       <h2>Sessions</h2>
 
